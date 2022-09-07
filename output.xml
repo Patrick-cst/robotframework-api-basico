@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on win32)" generated="20220906 16:58:34.947" rpa="false" schemaversion="3">
+<suite id="s1" name="TestCasesAPIBooks" source="d:\Cursos\robotFramework\WebTesting\TestCasesAPIBooks.robot">
+<kw name="Conectar a minha api" library="ResourcesAPI" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>fakeAPI</arg>
+<arg>${URL_API}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220906 16:58:35.050" level="INFO">Creating Session using : alias=fakeAPI, url=https://fakerestapi.azurewebsites.net/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220906 16:58:35.049" endtime="20220906 16:58:35.056"/>
+</kw>
+<status status="PASS" starttime="20220906 16:58:35.049" endtime="20220906 16:58:35.056"/>
+</kw>
+<test id="s1-t1" name="Cadastrar um novo livro (POST)" line="23">
+<kw name="Cadastrar um novo livro" library="ResourcesAPI">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADERS}</var>
+<arg>content-type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220906 16:58:35.059" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20220906 16:58:35.057" endtime="20220906 16:58:35.059"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${RESPOSTA}</var>
+<arg>fakeAPI</arg>
+<arg>Books</arg>
+<arg>data={"id": 0,"title": "teste","description": "test2","pageCount": 200,"excerpt": "test3","publishDate": "2022-09-06T19:41:04.07Z"}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20220906 16:58:35.060" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220906 16:58:36.169" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Books 
+ path_url=/api/v1/Books 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '126'} 
+ body=b'{"id": 0,"title": "teste","description": "test2","pageCount": 200,"excerpt": "test3","publishDate": "2022-09-06T19:41:04.07Z"}' 
+ </msg>
+<msg timestamp="20220906 16:58:36.170" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Books 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Tue, 06 Sep 2022 19:58:36 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":0,"title":"teste","description":"test2","pageCount":200,"excerpt":"test3","publishDate":"2022-09-06T19:41:04.07Z"} 
+ </msg>
+<msg timestamp="20220906 16:58:36.170" level="INFO">D:\Users\pac-c\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakerestapi.azurewebsites.net'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220906 16:58:36.173" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220906 16:58:35.060" endtime="20220906 16:58:36.173"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${RESPOSTA.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220906 16:58:36.175" level="INFO">{"id":0,"title":"teste","description":"test2","pageCount":200,"excerpt":"test3","publishDate":"2022-09-06T19:41:04.07Z"}</msg>
+<status status="PASS" starttime="20220906 16:58:36.173" endtime="20220906 16:58:36.175"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${RESPOSTA}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220906 16:58:36.176" level="INFO">${RESPOSTA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220906 16:58:36.175" endtime="20220906 16:58:36.177"/>
+</kw>
+<status status="PASS" starttime="20220906 16:58:35.057" endtime="20220906 16:58:36.177"/>
+</kw>
+<status status="PASS" starttime="20220906 16:58:35.056" endtime="20220906 16:58:36.179"/>
+</test>
+<doc>Documentation da API:</doc>
+<status status="PASS" starttime="20220906 16:58:34.952" endtime="20220906 16:58:36.182"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestCasesAPIBooks">TestCasesAPIBooks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220906 16:58:35.060" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
