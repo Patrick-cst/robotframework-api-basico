@@ -22,3 +22,7 @@ Buscar um livro especifico (GET em um livro especifico)
 
 Cadastrar um novo livro (POST)
    Cadastrar um novo livro
+
+Deletar livro
+   Requisitar todos os livros
+   Deletar livro "10"

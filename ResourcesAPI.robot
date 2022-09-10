@@ -6,7 +6,7 @@ Library       Collections
 
 
 *** Variables ***
-${URL_API}      https://fakerestapi.azurewebsites.net/api/v1/
+${URL_API}     https://fakerestapi.azurewebsites.net/api/v1/
 &{BOOK_15}     id=15
 ...            title=Book 15
 ...            pageCount=1500
@@ -52,3 +52,16 @@ Conferir se retorna todos os dados corretos do livro 15
     Should Not Be Empty    ${RESPOSTA.json()["description"]}
     Should Not Be Empty    ${RESPOSTA.json()["excerpt"]}
     Should Not Be Empty    ${RESPOSTA.json()["publishDate"]}
+
+Deletar livro "${ID_LIVRO}"
+    ${RESPONSE}  DELETE On Session    fakeAPI    Books/${ID_LIVRO}
+    Should Be Equal As Strings  ${RESPONSE.status_code}    200
+
+    # AVANÇADO
+
+Conectar com autenticacao basica na API do github    
+
+
+
+
+Solicitar os dados do meu usuario
