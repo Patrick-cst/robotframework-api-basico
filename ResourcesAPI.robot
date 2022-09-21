@@ -57,11 +57,9 @@ Deletar livro "${ID_LIVRO}"
     ${RESPONSE}  DELETE On Session    fakeAPI    Books/${ID_LIVRO}
     Should Be Equal As Strings  ${RESPONSE.status_code}    200
 
-    # AVANÇADO
-
-Conectar com autenticacao basica na API do github    
-
-
-
-
-Solicitar os dados do meu usuario
+Alterar dados do livro 10
+    ${RESP}    GET On Session    fakeAPI    Books/10
+    log    ${RESP.text}
+    ${body}=   Create Dictionary   title=alterado
+    ${RESPOSTA}  PUT On Session   fakeAPI   Books/10   json=${body}
+    log    ${RESPOSTA.text}

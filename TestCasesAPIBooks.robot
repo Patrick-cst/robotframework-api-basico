@@ -26,3 +26,6 @@ Cadastrar um novo livro (POST)
 Deletar livro
    Requisitar todos os livros
    Deletar livro "10"
+
+Alterar dados
+   Alterar dados do livro 10
